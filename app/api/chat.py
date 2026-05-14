@@ -13,7 +13,7 @@ from app.services.chat import handle_chat_message
 router = APIRouter(prefix="/api/chat", tags=["chat"])
 
 
-@router.post("", response_model=ChatResponse)
+@router.post("/", response_model=ChatResponse)
 async def chat(body: ChatRequest, user: dict = Depends(get_current_user)):
     """
     Send a message to create or edit a website.

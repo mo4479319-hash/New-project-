@@ -13,7 +13,7 @@ from app.models.schemas import BusinessCreate, BusinessResponse
 router = APIRouter(prefix="/api/businesses", tags=["businesses"])
 
 
-@router.post("", response_model=BusinessResponse)
+@router.post("/", response_model=BusinessResponse)
 async def create_business(body: BusinessCreate, user: dict = Depends(get_current_user)):
     """Create a new business for the authenticated user."""
     sb = get_supabase()
@@ -42,7 +42,7 @@ async def get_business(business_id: UUID, user: dict = Depends(get_current_user)
     return result.data[0]
 
 
-@router.get("", response_model=list[BusinessResponse])
+@router.get("/", response_model=list[BusinessResponse])
 async def list_businesses(user: dict = Depends(get_current_user)):
     """List all businesses for the authenticated user."""
     sb = get_supabase()
